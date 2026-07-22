@@ -62,29 +62,31 @@ offerButton.addEventListener("click", async function () {
     }
 
     const { data, error } = await supabaseClient.rpc(
-        "increment_flower_counter",
-        {
-            is_new_devotee: isNewDevotee
-        }
-    );
-
-    if (!error) {
-
-        flowerCount = data[0].total_flowers;
-        devoteeCount = data[0].total_devotees;
-
-        counter.innerHTML =
-            "🌸 Flowers Offered : " + flowerCount;
-
-        devoteeCounter.innerHTML =
-            "🙏 Devotees Participated : " + devoteeCount;
-
-    } else {
-
-        console.error(error);
-
+    "increment_flower_counter",
+    {
+        is_new_devotee: isNewDevotee
     }
+);
 
+console.log("RPC Data:", data);
+console.log("RPC Error:", error);
+
+if (!error) {
+
+    flowerCount = data[0].total_flowers;
+    devoteeCount = data[0].total_devotees;
+
+    counter.innerHTML =
+        "🌸 Flowers Offered : " + flowerCount;
+
+    devoteeCounter.innerHTML =
+        "🙏 Devotees Participated : " + devoteeCount;
+
+} else {
+
+    console.error(error);
+
+}
     const flower = document.createElement("img");
 
     flower.src = "images/images.png";
