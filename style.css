@@ -165,12 +165,9 @@ p{
     }
 
     100%{
-
-    transform:
-    translateX(0px)
-    rotate(360deg);
-
-}
+        top:470px;
+        transform:translateX(0px) rotate(360deg);
+    }
 
 }
 
