@@ -1,3 +1,12 @@
+const SUPABASE_URL = "https://qbexbzdnevrxjxzldepy.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_OdSrzj_esf5vemOMPJzZRg_Sa2Ud7bi";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
 const offerButton = document.getElementById("offerBtn");
 const message = document.getElementById("message");
 const deityContainer = document.getElementById("deityContainer");
