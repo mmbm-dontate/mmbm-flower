@@ -16,10 +16,10 @@ offerButton.addEventListener("click", function(){
 
     flower.classList.add("flower");
     
-    const startX = Math.floor(Math.random() * 120) + 120;
+    const startX = Math.floor(Math.random() * 140) + 110;
 
     flower.style.left = startX + "px";
-
+    
     flower.style.top = "-60px";
 
     deityContainer.appendChild(flower);
