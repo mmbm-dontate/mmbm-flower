@@ -1,0 +1,118 @@
+/* Page Background */
+
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fdf8ef;
+}
+
+
+/* Main Container */
+
+.container{
+
+    width:90%;
+    max-width:800px;
+
+    margin:40px auto;
+
+    text-align:center;
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+}
+
+
+/* Heading */
+
+h1{
+
+    color:#8B0000;
+
+    margin-bottom:10px;
+
+}
+
+
+/* Description */
+
+p{
+
+    font-size:18px;
+
+    color:#555;
+
+    margin-bottom:25px;
+
+}
+
+
+/* Deity Image */
+
+#deity{
+
+    width:100%;
+
+    max-width:450px;
+
+    border-radius:12px;
+
+    border:4px solid #FFD700;
+
+}
+
+
+/* Offer Button */
+
+#offerBtn{
+
+    margin-top:30px;
+
+    padding:15px 35px;
+
+    font-size:20px;
+
+    background:#d32f2f;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+/* Button Hover */
+
+#offerBtn:hover{
+
+    background:#a30000;
+
+}
+
+
+/* Thank You Message */
+
+#message{
+
+    margin-top:25px;
+
+    font-size:22px;
+
+    color:green;
+
+    font-weight:bold;
+
+}
