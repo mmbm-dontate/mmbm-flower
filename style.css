@@ -124,3 +124,38 @@ p{
     display:inline-block;
 
 }
+
+/* Falling Flower */
+
+.flower{
+
+    position:absolute;
+
+    width:45px;
+
+    animation:fall 3s linear forwards;
+
+}
+
+
+/* Animation */
+
+@keyframes fall{
+
+    from{
+
+        top:-60px;
+
+        opacity:1;
+
+    }
+
+    to{
+
+        top:430px;
+
+        opacity:1;
+
+    }
+
+}
