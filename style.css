@@ -116,3 +116,11 @@ p{
     font-weight:bold;
 
 }
+
+#deityContainer{
+
+    position:relative;
+
+    display:inline-block;
+
+}
