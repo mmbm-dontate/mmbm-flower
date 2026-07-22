@@ -13,6 +13,10 @@ const landingPositions = [
     260,
     290
 ];
+const counter =
+document.getElementById("counter");
+
+let flowerCount = 0;
 
 offerButton.addEventListener("click", function(){
 
@@ -35,6 +39,11 @@ offerButton.addEventListener("click", function(){
 
     deityContainer.appendChild(flower);
     flowers.push(flower);
+
+    flowerCount++;
+
+    counter.innerHTML =
+    "Flowers Offered : " + flowerCount;
 
     if(flowers.length > 30){
 
