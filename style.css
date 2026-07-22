@@ -150,6 +150,27 @@ p{
 
     }
 
+    40%{
+
+        transform:rotate(120deg);
+
+    }
+
+    70%{
+
+        transform:rotate(220deg);
+
+    }
+
+    100%{
+
+        top:330px;
+
+        transform:rotate(360deg);
+
+    }
+
+}
     100%{
 
         top:430px;
