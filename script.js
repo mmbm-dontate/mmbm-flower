@@ -1,6 +1,9 @@
 const offerButton = document.getElementById("offerBtn");
 const message = document.getElementById("message");
 const deityContainer = document.getElementById("deityContainer");
+const flowerBed = document.getElementById("flowerBed");
+
+const flowers = [];
 
 offerButton.addEventListener("click", function(){
 
