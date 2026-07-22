@@ -133,7 +133,7 @@ p{
 
     width:45px;
 
-    animation:fall 3s linear forwards;
+    animation:fall 3s ease-in forwards;
 
 }
 
@@ -141,6 +141,26 @@ p{
 /* Animation */
 
 @keyframes fall{
+
+    0%{
+
+        top:-60px;
+
+        transform:rotate(0deg);
+
+    }
+
+    100%{
+
+        top:430px;
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+{
 
     from{
 
