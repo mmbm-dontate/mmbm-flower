@@ -1,13 +1,24 @@
-// Find the Offer Flower button
 const offerButton = document.getElementById("offerBtn");
-
-// Find the message area
 const message = document.getElementById("message");
+const deityContainer = document.getElementById("deityContainer");
 
-// Run this when the button is clicked
-offerButton.addEventListener("click", function () {
+offerButton.addEventListener("click", function(){
 
     message.innerHTML =
     "🙏 Your flower has been offered successfully.";
+
+    const flower = document.createElement("img");
+
+    flower.src = "images/images.jpg";
+
+    flower.style.width = "45px";
+
+    flower.style.position = "absolute";
+
+    flower.style.left = "180px";
+
+    flower.style.top = "-60px";
+
+    deityContainer.appendChild(flower);
 
 });
