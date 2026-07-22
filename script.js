@@ -16,6 +16,23 @@ const bellSound = document.getElementById("bellSound");
 const flowers = [];
 let flowerCount = 0;
 
+async function loadFlowerCount() {
+
+    const { data, error } = await supabaseClient
+        .from("flower_counter")
+        .select("total_flowers")
+        .eq("id", 1)
+        .single();
+
+    if (error) {
+        console.error("Error loading flower count:", error);
+        return;
+    }
+
+    flowerCount = data.total_flowers;
+    counter.innerHTML = "Flowers Offered : " + flowerCount;
+}
+
 offerButton.addEventListener("click", async function () {
 
     bellSound.pause();
@@ -32,9 +49,14 @@ offerButton.addEventListener("click", async function () {
 
     message.innerHTML = "🙏 Your flower has been offered successfully.";
 
-    flowerCount++;
-    counter.innerHTML = "Flowers Offered : " + flowerCount;
+    const { data, error } = await supabaseClient.rpc("increment_flower_counter");
 
+if (error) {
+    console.error("Error updating flower count:", error);
+} else {
+    flowerCount = data;
+    counter.innerHTML = "Flowers Offered : " + flowerCount;
+}
     const flower = document.createElement("img");
 
     flower.src = "images/images.png";
@@ -74,3 +96,5 @@ offerButton.addEventListener("click", async function () {
     }
 
 });
+
+loadFlowerCount();
