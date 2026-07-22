@@ -205,3 +205,13 @@ p{
     pointer-events:none;
 
 }
+
+#counter{
+
+    color:#8B0000;
+
+    margin-top:20px;
+
+    font-size:24px;
+
+}
