@@ -26,6 +26,11 @@ offerButton.addEventListener("click", function(){
     "🙏 Your flower has been offered successfully.";
 
     const flower = document.createElement("img");
+    const size =
+    30 + Math.random()*12;
+
+    flower.style.width =
+    size+"px";
 
     flower.src = "images/images.png";
 
