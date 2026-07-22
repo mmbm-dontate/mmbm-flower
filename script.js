@@ -84,7 +84,8 @@ if (!error) {
 
 } else {
 
-    console.error(error);
+    console.log("RPC Error Details:", error);
+alert(error.message);
 
 }
     const flower = document.createElement("img");
