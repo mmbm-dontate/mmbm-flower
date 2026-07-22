@@ -16,7 +16,13 @@ const bellSound = document.getElementById("bellSound");
 const flowers = [];
 let flowerCount = 0;
 
-offerButton.addEventListener("click", function () {
+offerButton.addEventListener("click", async function () {
+
+    bellSound.pause();
+    bellSound.currentTime = 0;
+    bellSound.play().catch(error => {
+        console.log("Audio playback prevented:", error);
+    });
     
     bellSound.pause();
     bellSound.currentTime = 0;
