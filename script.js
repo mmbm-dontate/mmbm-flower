@@ -4,15 +4,17 @@ const deityContainer = document.getElementById("deityContainer");
 const flowerBed = document.getElementById("flowerBed");
 
 const flowers = [];
-const landingPositions = [
-    110,
-    140,
-    170,
-    200,
-    230,
-    260,
-    290
-];
+const landingArea = {
+
+    minX:110,
+
+    maxX:290,
+
+    minY:420,
+
+    maxY:480
+
+};
 const counter =
 document.getElementById("counter");
 
@@ -29,11 +31,28 @@ offerButton.addEventListener("click", function(){
 
     flower.classList.add("flower");
     
-    const randomIndex =
-    Math.floor(Math.random() * landingPositions.length);
+    const randomX =
+    Math.floor(
+
+    Math.random() *
+    (landingArea.maxX - landingArea.minX)
+
+    ) + landingArea.minX;
 
     flower.style.left =
-    landingPositions[randomIndex] + "px";
+    randomX + "px";
+
+    const randomY =
+    Math.floor(
+
+    Math.random() *
+    (landingArea.maxY - landingArea.minY)
+
+    ) + landingArea.minY;
+
+    flower.style.top =
+    randomY + "px";
+    
     
     flower.style.top = "-60px";
 
