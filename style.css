@@ -129,9 +129,10 @@ p{
 
 .flower{
 
+    z-index:5;
     position:absolute;
 
-    width:38px;
+    width:34px;
 
     animation:fall 3.8s ease-in-out forwards;
 
@@ -164,9 +165,12 @@ p{
     }
 
     100%{
-        top:470px;
-        transform:translateX(0px) rotate(360deg);
-    }
+
+    transform:
+    translateX(0px)
+    rotate(360deg);
+
+}
 
 }
 
