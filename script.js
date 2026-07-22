@@ -45,19 +45,7 @@ offerButton.addEventListener("click", function(){
     ) + landingArea.minX;
 
     flower.style.left =
-    randomX + "px";
-
-    const randomY =
-    Math.floor(
-
-    Math.random() *
-    (landingArea.maxY - landingArea.minY)
-
-    ) + landingArea.minY;
-
-    flower.style.top =
-    randomY + "px";
-    
+    randomX + "px";    
     
     flower.style.top = "-60px";
 
