@@ -2,11 +2,18 @@ const offerButton = document.getElementById("offerBtn");
 const message = document.getElementById("message");
 const deityContainer = document.getElementById("deityContainer");
 const counter = document.getElementById("counter");
+const bellSound = document.getElementById("bellSound");
 
 const flowers = [];
 let flowerCount = 0;
 
 offerButton.addEventListener("click", function () {
+    
+    bellSound.pause();
+    bellSound.currentTime = 0;
+    bellSound.play().catch(error => {
+    console.log("Audio playback prevented:", error);
+});
 
     message.innerHTML = "🙏 Your flower has been offered successfully.";
 
