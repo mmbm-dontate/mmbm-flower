@@ -13,7 +13,9 @@ offerButton.addEventListener("click", function(){
 
     flower.classList.add("flower");
     
-    flower.style.left = "180px";
+    const startX = Math.floor(Math.random() * 120) + 120;
+
+    flower.style.left = startX + "px";
 
     flower.style.top = "-60px";
 
