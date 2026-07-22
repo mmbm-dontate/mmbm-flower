@@ -11,69 +11,93 @@ const offerButton = document.getElementById("offerBtn");
 const message = document.getElementById("message");
 const deityContainer = document.getElementById("deityContainer");
 const counter = document.getElementById("counter");
+const devoteeCounter = document.getElementById("devoteeCounter");
 const bellSound = document.getElementById("bellSound");
 
 const flowers = [];
 let flowerCount = 0;
+let devoteeCount = 0;
 
-async function loadFlowerCount() {
+async function loadCounters() {
 
     const { data, error } = await supabaseClient
         .from("flower_counter")
-        .select("total_flowers")
+        .select("total_flowers,total_devotees")
         .eq("id", 1)
         .single();
 
     if (error) {
-        console.error("Error loading flower count:", error);
+        console.error(error);
         return;
     }
 
     flowerCount = data.total_flowers;
-    counter.innerHTML = "Flowers Offered : " + flowerCount;
+    devoteeCount = data.total_devotees;
+
+    counter.innerHTML = "🌸 Flowers Offered : " + flowerCount;
+    devoteeCounter.innerHTML = "🙏 Devotees Participated : " + devoteeCount;
 }
 
 offerButton.addEventListener("click", async function () {
 
     bellSound.pause();
     bellSound.currentTime = 0;
+
     bellSound.play().catch(error => {
-        console.log("Audio playback prevented:", error);
+        console.log(error);
     });
-    
-    bellSound.pause();
-    bellSound.currentTime = 0;
-    bellSound.play().catch(error => {
-    console.log("Audio playback prevented:", error);
-});
 
     message.innerHTML = "🙏 Your flower has been offered successfully.";
 
-    const { data, error } = await supabaseClient.rpc("increment_flower_counter");
+    let isNewDevotee = false;
 
-if (error) {
-    console.error("Error updating flower count:", error);
-} else {
-    flowerCount = data;
-    counter.innerHTML = "Flowers Offered : " + flowerCount;
-}
+    if (!localStorage.getItem("devotee_id")) {
+
+        localStorage.setItem(
+            "devotee_id",
+            crypto.randomUUID()
+        );
+
+        isNewDevotee = true;
+    }
+
+    const { data, error } = await supabaseClient.rpc(
+        "increment_flower_counter",
+        {
+            is_new_devotee: isNewDevotee
+        }
+    );
+
+    if (!error) {
+
+        flowerCount = data[0].total_flowers;
+        devoteeCount = data[0].total_devotees;
+
+        counter.innerHTML =
+            "🌸 Flowers Offered : " + flowerCount;
+
+        devoteeCounter.innerHTML =
+            "🙏 Devotees Participated : " + devoteeCount;
+
+    } else {
+
+        console.error(error);
+
+    }
+
     const flower = document.createElement("img");
 
     flower.src = "images/images.png";
     flower.classList.add("flower");
 
-    // Random flower size
     const size = Math.floor(Math.random() * 12) + 30;
     flower.style.width = size + "px";
 
-    // Random horizontal position
     const startX = Math.floor(Math.random() * 170) + 120;
     flower.style.left = startX + "px";
 
-    // Start above the image
     flower.style.top = "-60px";
 
-    // Random animation duration
     flower.style.animationDuration =
         (3 + Math.random()).toFixed(1) + "s";
 
@@ -81,7 +105,6 @@ if (error) {
 
     flowers.push(flower);
 
-    // Keep only 30 flowers visible
     if (flowers.length > 30) {
 
         flowers[0].style.opacity = "0";
@@ -97,4 +120,4 @@ if (error) {
 
 });
 
-loadFlowerCount();
+loadCounters();
