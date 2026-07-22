@@ -9,7 +9,7 @@ offerButton.addEventListener("click", function(){
 
     const flower = document.createElement("img");
 
-    flower.src = "images/images.jpg";
+    flower.src = "images/images.png";
 
     flower.classList.add("flower");
     
