@@ -4,6 +4,15 @@ const deityContainer = document.getElementById("deityContainer");
 const flowerBed = document.getElementById("flowerBed");
 
 const flowers = [];
+const landingPositions = [
+    110,
+    140,
+    170,
+    200,
+    230,
+    260,
+    290
+];
 
 offerButton.addEventListener("click", function(){
 
@@ -16,12 +25,23 @@ offerButton.addEventListener("click", function(){
 
     flower.classList.add("flower");
     
-    const startX = Math.floor(Math.random() * 140) + 110;
+    const randomIndex =
+    Math.floor(Math.random() * landingPositions.length);
 
-    flower.style.left = startX + "px";
+    flower.style.left =
+    landingPositions[randomIndex] + "px";
     
     flower.style.top = "-60px";
 
     deityContainer.appendChild(flower);
+    flowers.push(flower);
+
+    if(flowers.length > 30){
+
+    const oldFlower = flowers.shift();
+
+    oldFlower.remove();
+
+}
 
 });
