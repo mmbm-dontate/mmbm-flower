@@ -11,10 +11,8 @@ offerButton.addEventListener("click", function(){
 
     flower.src = "images/images.jpg";
 
-    flower.style.width = "45px";
-
-    flower.style.position = "absolute";
-
+    flower.classList.add("flower");
+    
     flower.style.left = "180px";
 
     flower.style.top = "-60px";
