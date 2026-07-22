@@ -1,68 +1,54 @@
 const offerButton = document.getElementById("offerBtn");
 const message = document.getElementById("message");
 const deityContainer = document.getElementById("deityContainer");
-const flowerBed = document.getElementById("flowerBed");
+const counter = document.getElementById("counter");
 
 const flowers = [];
-const landingArea = {
-
-    minX:110,
-
-    maxX:290,
-
-    minY:420,
-
-    maxY:480
-
-};
-const counter =
-document.getElementById("counter");
-
 let flowerCount = 0;
 
-offerButton.addEventListener("click", function(){
+offerButton.addEventListener("click", function () {
 
-    message.innerHTML =
-    "🙏 Your flower has been offered successfully.";
-
-    const flower = document.createElement("img");
-    const size =
-    30 + Math.random()*12;
-
-    flower.style.width =
-    size+"px";
-
-    flower.src = "images/images.png";
-
-    flower.classList.add("flower");
-    
-    const randomX =
-    Math.floor(
-
-    Math.random() *
-    (landingArea.maxX - landingArea.minX)
-
-    ) + landingArea.minX;
-
-    flower.style.left =
-    randomX + "px";    
-    
-    flower.style.top = "-60px";
-
-    deityContainer.appendChild(flower);
-    flowers.push(flower);
+    message.innerHTML = "🙏 Your flower has been offered successfully.";
 
     flowerCount++;
+    counter.innerHTML = "Flowers Offered : " + flowerCount;
 
-    counter.innerHTML =
-    "Flowers Offered : " + flowerCount;
+    const flower = document.createElement("img");
 
-    if(flowers.length > 30){
+    flower.src = "images/images.png";
+    flower.classList.add("flower");
 
-    const oldFlower = flowers.shift();
+    // Random flower size
+    const size = Math.floor(Math.random() * 12) + 30;
+    flower.style.width = size + "px";
 
-    oldFlower.remove();
+    // Random horizontal position
+    const startX = Math.floor(Math.random() * 170) + 120;
+    flower.style.left = startX + "px";
 
-}
+    // Start above the image
+    flower.style.top = "-60px";
+
+    // Random animation duration
+    flower.style.animationDuration =
+        (3 + Math.random()).toFixed(1) + "s";
+
+    deityContainer.appendChild(flower);
+
+    flowers.push(flower);
+
+    // Keep only 30 flowers visible
+    if (flowers.length > 30) {
+
+        flowers[0].style.opacity = "0";
+
+        setTimeout(() => {
+
+            flowers[0].remove();
+            flowers.shift();
+
+        }, 500);
+
+    }
 
 });
